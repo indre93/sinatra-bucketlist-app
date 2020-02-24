@@ -8,4 +8,5 @@ end
 use Rack::MethodOverride
 
 # here is will I will mount other controllers using 'use'
+use UsersController
 run ApplicationController
