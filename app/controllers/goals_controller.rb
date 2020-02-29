@@ -22,6 +22,10 @@ class GoalsController < ApplicationController
   end
 
   # show route for a goal
+  get '/goals/:id' do
+    @goal = Goal.find_by(params[:id])
+    erb :'/goals/show'
+  end
 
   # index route to show all goals
 
