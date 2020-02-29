@@ -2,12 +2,12 @@ require 'pry'
 
 class UsersController < ApplicationController
  
-  # The purpose of this route is to render the login page (form)
+  # this route is to render the login page (form)
   get '/login' do 
     erb :login
   end
 
-  # The purpose of this route is to receive the login form, find the user and log the user in (create a session)
+  # this is to receive the login form, find the user and log the user in (create a session)
   post '/login' do 
     # find the user
     @user = User.find_by(email: params[:email])
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     else
       # tell the user the have entered the invalid credential
       # redirect them to the login page
+      redirect '/login'
     end
   end
 
@@ -29,20 +30,31 @@ class UsersController < ApplicationController
     erb :signup
   end
 
-  # this is where we will create the new user and persist the new user to the database
+  # this is where new user is created and persisted to the DB
   post '/users' do
     # I only want to persist a user that has a name, email & password
     if params[:name] != "" && params[:email] != "" && params[:password] != ""
       # valid input
       @user = User.create(params)
+      session[:user_id] = @user.id # actually logging the user in      
+      # redirect to user's sow page
+      redirect "/users/#{@user.id}"
     else
       # not valid input
+      # better to include an error message
+      redirect '/signup'
     end
   end
 
   # user SHOW route
   get '/users/:id' do
-    "this will be the user show route"
+    @user = User.find_by(id: params[:id])
+    erb :'/users/show'
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 
 
