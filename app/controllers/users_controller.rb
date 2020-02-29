@@ -1,5 +1,3 @@
-require 'pry'
-
 class UsersController < ApplicationController
  
   # this route is to render the login page (form)
