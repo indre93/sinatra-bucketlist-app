@@ -5,9 +5,20 @@ class GoalsController < ApplicationController
     erb :'/goals/new'
   end
 
-  # post goals route to create a new goal
-  post '/goals' do
+  # this route to create a new goal & save it to the DB
+  post '/goals' do 
+    # Only want to create if user logged in
+    if !logged_in?
+      redirect '/'
+    end
 
+    # Only want to save it if it has some content
+    if params[:title] != "" && params[:description] != ""
+      @goal = Goal.create(title: params[:title], description: params[:description], user_id: current_user.id)
+      redirect "/goals/#{@goal.id}"
+    else
+      redirect '/goals/new'
+    end
   end
 
   # show route for a goal
