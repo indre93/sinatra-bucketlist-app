@@ -9,9 +9,8 @@
   <h3>Description: </h3>
   <textarea name="description" style="width:auto; height:auto"><%= @goal.description %></textarea>
   <br><br>
-  <h3>Goal Completed? </h3>
-  <input type="radio" name="completed?" value="<%= @goal.completed? %>"> Yes
-  <input type="radio" name="completed?" value="<%= @goal.completed? %>"> No
+  <input type="checkbox" name="completed?"> Goal Completed?
+
 
   <br><br>
   <input type="submit" value="Edit Goal">
