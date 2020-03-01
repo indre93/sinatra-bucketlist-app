@@ -1,5 +1,11 @@
 class GoalsController < ApplicationController
 
+  # to show all goals
+  get '/goals' do
+    @goals = Goal.all 
+    erb :'goals/index'
+  end
+
   # this is to render a form to create a new goal
   get '/goals/new' do
     erb :'/goals/new'
@@ -13,7 +19,7 @@ class GoalsController < ApplicationController
     # Only want to save it if it has some content
     if params[:title] != "" && params[:description] != ""
       @goal = Goal.create(title: params[:title], description: params[:description], user_id: current_user.id)
-      redirect "goals/#{@goal.id}"
+      redirect "/goals/#{@goal.id}"
     else
       redirect '/goals/new'
     end
@@ -29,10 +35,10 @@ class GoalsController < ApplicationController
   get '/goals/:id/edit' do
     set_goal 
     if logged_in?
-      if @goal.user == current_user
+      if authorized_to_changes?(@goal)
         erb :'/goals/edit'
       else
-        redirect "users/#{current_user.id}"
+        redirect "/users/#{current_user.id}"
       end
     else 
       redirect '/'
@@ -43,18 +49,16 @@ class GoalsController < ApplicationController
   patch '/goals/:id' do 
     set_goal 
     if logged_in?
-      if @goal.user == current_user
+      if authorized_to_changes?(@goal)
         @goal.update(title: params[:title], description: params[:description])
         redirect "/goals/#{@goal.id}"
       else
-        redirect "users/#{current_user.id}"
+        redirect "/users/#{current_user.id}"
       end
     else
       redirect '/'
     end
   end
-
-  # index route to show all goals
 
   private # it means we're going to create methods that will only be used by this class
   
