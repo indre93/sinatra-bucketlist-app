@@ -38,7 +38,7 @@ class GoalsController < ApplicationController
       if authorized_to_changes?(@goal)
         erb :'/goals/edit'
       else
-        redirect "/users/#{current_user.id}"
+        redirect "users/#{current_user.id}"
       end
     else 
       redirect '/'
