@@ -1,1 +1,9 @@
-INDEX PAGE FOR GOALS
+<h2>All Goals</h2>
+
+<% @goals.each do |goal| %>
+  Title: <%= goal.title %><br>
+  Description: <%= goal.description %><br>
+  Created: <%= goal.created_at %><br>
+  Completed? <%= goal.completed? %><br>
+  <br><br>
+<% end %>
