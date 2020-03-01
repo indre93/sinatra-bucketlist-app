@@ -28,6 +28,10 @@ class ApplicationController < Sinatra::Base
       # this instance variable will be created and assigned if user found, otherwise it will still be nill
       @current_user ||= User.find_by(id: session[:user_id])
     end
+
+    def authorized_to_changes?(goal)
+      goal.user == current_user
+    end
   end
 
 end
