@@ -27,6 +27,12 @@ class GoalsController < ApplicationController
     erb :'/goals/show'
   end
 
+  # route to edit a goal - should send us to goal/edit.erb
+  # render an edit form
+  get '/goals/:id/edit' do
+    erb :'/goals/edit'
+  end
+
   # index route to show all goals
 
 end
