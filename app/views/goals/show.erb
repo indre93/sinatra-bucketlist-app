@@ -1,9 +1,9 @@
 <h1>Goal: </h1>
 <br>
 <h2><%= @goal.title %></h2>
-
 <h3><%= @goal.description %></h3>
+<h3>Completed? <%= @goal.completed? %></h3>
 <br>
 <a href="/goals/<%= @goal.id %>/edit">Edit Goal</a>
-
+<br>
 <a href="/goals/<%= @goal.id %>/delete">Delete Goal</a>
