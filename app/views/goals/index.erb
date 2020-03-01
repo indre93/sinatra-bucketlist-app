@@ -1,9 +1,10 @@
 <h2>All Goals</h2>
 
 <% @goals.each do |goal| %>
-  Title: <%= goal.title %><br>
-  Description: <%= goal.description %><br>
-  Created: <%= goal.created_at %><br>
-  Completed? <%= goal.completed? %><br>
+  <h4><a href="/goals/<%= goal.id %>"><%= goal.title %></a></h4>
+  <h5>By: <%= goal.user.name %></h5>
+  <%= goal.description %></br>
+  <h6>Created: <%= goal.created_at %></h6>
+  <h5>Completed? <%= goal.completed? %></h3>
   <br><br>
 <% end %>
