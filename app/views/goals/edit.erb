@@ -1,1 +1,18 @@
-Edit Form
+<h2>Edit Goal: </h2>
+
+<form class="" action="/goals/<%= @goal.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <h3>Tile: </h3>
+  <textarea name="title" style="width:auto; height:auto"><%= @goal.title %></textarea>
+  <br><br>
+  <h3>Description: </h3>
+  <textarea name="description" style="width:auto; height:auto"><%= @goal.description %></textarea>
+  <br><br>
+  <h3>Goal Completed? </h3>
+  <input type="radio" name="completed?" value="<%= @goal.completed? %>"> Yes
+  <input type="radio" name="completed?" value="<%= @goal.completed? %>"> No
+
+  <br><br>
+  <input type="submit" value="Edit Goal">
+</form>
