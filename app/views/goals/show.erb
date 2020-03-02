@@ -13,6 +13,9 @@
 <% if authorized_to_edit?(@goal) %>
 <br><br>
   <a href="/goals/<%= @goal.id %>/edit">Edit</a>
-  <br>
-  <a href="/goals/<%= @goal.id %>/delete">Delete</a>
+  <br><br>
+  <form action="/goals/<%= @goal.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Goal" id="Delete Goal">
+  </form>
 <% end %>
