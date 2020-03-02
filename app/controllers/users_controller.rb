@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     erb :signup
   end
 
-
   # this is where new user is created and persisted to the DB
   post '/users' do
     # I only want to persist a user that has a name, email & password
