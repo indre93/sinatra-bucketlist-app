@@ -71,7 +71,7 @@ class GoalsController < ApplicationController
   private # it means we're going to create methods that will only be used by this class
   
   def set_goal 
-    @goal = Goal.find_by(params[:id])
+    @goal = Goal.find_by(id: params[:id])
   end
 
 end
