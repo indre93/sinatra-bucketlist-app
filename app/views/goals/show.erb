@@ -1,13 +1,16 @@
-<h1>Goal: </h1>
+<h1>Goal </h1>
 <br>
   <h2><%= @goal.title %></h2>
-  <h5>Created: <%= @goal.created_at %></h5>
-  <h3><%= @goal.description %></h3>
+  <h5>Created: <%= @goal.created_at %></h5><br>
+  <p><%= @goal.description %></p>
+  
   <% if @goal.completed? %>
-    <h3>Completed? YES!</h3>
+    <label><b>Completed? </b></label>YES!
   <% else %>
-    <h3>Completed? NOPE</h3>
-  <% end %>
+    <label><b>Completed? </b></label>NOPE
+  <% end %> 
+
+<br><br>
 
 <% if authorized_to_edit?(@goal) %>
   <a href="/goals/<%= @goal.id %>/edit">Edit</a>
