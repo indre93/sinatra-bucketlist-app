@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id #actually logging the user in
       redirect "users/#{@user.id}"
     else
+      flash[:message] = "Invalid credentials. Please try again or sign up"
       redirect '/login'
     end
   end
@@ -31,8 +32,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id # actually logging the user in      
       redirect "/users/#{@user.id}"
     else
-      # not valid input
-      # better to include an error message
+      flash[:message] = "Invalid credentials. Please try again"
       redirect '/signup'
     end
   end
