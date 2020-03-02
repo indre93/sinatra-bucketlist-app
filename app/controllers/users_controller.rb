@@ -7,18 +7,13 @@ class UsersController < ApplicationController
 
   # this is to receive the login form, find the user and log the user in (create a session)
   post '/login' do 
-    # find the user
     @user = User.find_by(email: params[:email])
-    # authenticate the user (verified the user is who they say they are - have the right credentials)
-    if @user.authenticate(params[:password])
+
+    if @user && @user.authenticate(params[:password])
     # log the user in - create the user session
       session[:user_id] = @user.id #actually logging the user in
-    # redirect the user's landing page (user show page)
-      puts session
       redirect "users/#{@user.id}"
     else
-      # tell the user the have entered the invalid credential
-      # redirect them to the login page
       redirect '/login'
     end
   end
@@ -32,10 +27,8 @@ class UsersController < ApplicationController
   post '/users' do
     # I only want to persist a user that has a name, email & password
     if params[:name] != "" && params[:email] != "" && params[:password] != ""
-      # valid input
       @user = User.create(params)
       session[:user_id] = @user.id # actually logging the user in      
-      # redirect to user's sow page
       redirect "/users/#{@user.id}"
     else
       # not valid input
