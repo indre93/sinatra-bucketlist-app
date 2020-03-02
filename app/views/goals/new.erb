@@ -2,13 +2,15 @@
 
 <form class="" action="/goals" method="post">
 
-  <h3>Tile: </h3>
-  <input type="text" name="title"><br><br>
-  <h3>Description: </h3>
-  <input type="text" name="description"><br><br>
-  <input type="checkbox" name="completed?"> Goal Completed?
-  
-  <br><br>
-  <input type="submit" value="Create Goal">
+  <h4>Tile: </h4>
+    <input type="text" name="title"><br><br>
+  <h4>Description: </h4>
+    <textarea name="description" style="width:447; height:200"></textarea><br><br>
+  <label>Completed? </label>
+		<input type="checkbox"  name="completed?">  Yes 
+		<input type="checkbox"  name="completed?">  No
 
+  <br><br>
+
+    <input type="submit" value="Create Goal">
 </form>
