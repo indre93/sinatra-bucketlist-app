@@ -1,17 +1,17 @@
 class GoalsController < ApplicationController
 
-  # to show all goals
+  # route to show all goals
   get '/goals' do
     @goals = Goal.all 
     erb :'goals/index'
   end
 
-  # this is to render a form to create a new goal
+  # route is to render a form to create a new goal
   get '/goals/new' do
     erb :'/goals/new'
   end
 
-  # this route to create a new goal & save it to the DB
+  # route to create a new goal & save it to the DB
   post '/goals' do 
     if !logged_in?
       redirect '/'
