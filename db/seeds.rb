@@ -10,7 +10,7 @@ john = User.create(name:"John", email:"john@smith.com", password:"password")
 
 indres_goal = indre.goals.create(title: "Finish coding bootcamp", description: "Make sure to finish coding bootcamp on time and have fun while doing it")
 
-johns_goal = john.goals.create(title: "travel internationally", description: "Go anywhere in Europe this summer")
+johns_goal = john.goals.create(title: "Travel internationally", description: "Go anywhere in Europe this summer")
 
 
 
