@@ -10,12 +10,9 @@
     <label><b>Completed? </b></label>NOPE
   <% end %> 
 
-<br><br>
-
 <% if authorized_to_edit?(@goal) %>
+<br><br>
   <a href="/goals/<%= @goal.id %>/edit">Edit</a>
   <br>
   <a href="/goals/<%= @goal.id %>/delete">Delete</a>
-<% else %>
-  nil
 <% end %>
