@@ -20,6 +20,12 @@
         <a href="/goals/new">New Goal</a>
         <a href="/logout">Log out</a>
       <% end %>
+    </div>
+    <br>
+    <% if flash[:message] %>
+      <h5><%= flash[:message] %></h5>
+    <% end %>
+
     <div class="wrapper">
 
         <%= yield %>
