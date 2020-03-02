@@ -57,7 +57,7 @@ class GoalsController < ApplicationController
   patch '/goals/:id' do 
     set_goal 
     if logged_in?
-      if authorized_to_edit?(@goal)
+      if authorized_to_edit?(@goal) && params[:title] != "" && params[:description] != ""
         @goal.update(title: params[:title], description: params[:description])
         redirect "/goals/#{@goal.id}"
       else
