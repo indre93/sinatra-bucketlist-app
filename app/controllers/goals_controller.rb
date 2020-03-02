@@ -68,10 +68,20 @@ class GoalsController < ApplicationController
     end
   end
 
+  delete '/goals/:id' do
+    set_goal
+    if authorized_to_edit?(@goal)
+      @goal.destroy
+      redirect '/goals'
+    else
+      redirect '/goals'
+    end
+  end
+
   private # it means we're going to create methods that will only be used by this class
   
   def set_goal 
-    @goal = Goal.find_by(id: params[:id])
+    @goal = Goal.find(params[:id])
   end
 
 end
