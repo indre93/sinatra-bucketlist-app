@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   post '/users' do
     # I only want to persist a user that has a name, email & password
     @user = User.new(params)
-
+    
     if @user.save
       session[:user_id] = @user.id # actually logging the user in 
       flash[:messages] = "Account successfully created. Welcome to the BucketList App, #{@user.name}!"    
@@ -43,18 +43,15 @@ class UsersController < ApplicationController
   # user SHOW route
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
+    redirect_if_not_logged_in
     erb :'/users/show'
   end
 
   get '/logout' do
-    if logged_in?
-      session.clear
-      flash[:messages] = "You have successfully logged out!"
-      redirect '/login'
-    else
-      flash[:errors] = "Sorry, but you are not logged in."
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    session.clear
+    flash[:messages] = "You have successfully logged out!"
+    redirect '/login'
   end
 
 
