@@ -2,13 +2,21 @@ class GoalsController < ApplicationController
 
   # route to show all goals
   get '/goals' do
-    @goals = Goal.all 
-    erb :'goals/index'
+    if logged_in?
+      @goals = Goal.all 
+      erb :'goals/index'
+    else
+      redirect '/'
+    end
   end
 
   # route is to render a form to create a new goal
   get '/goals/new' do
-    erb :'/goals/new'
+    if logged_in?
+      erb :'/goals/new'
+    else
+      redirect '/'
+    end
   end
 
   # route to create a new goal & save it to the DB
@@ -35,7 +43,7 @@ class GoalsController < ApplicationController
   get '/goals/:id/edit' do
     set_goal 
     if logged_in?
-      if authorized_to_changes?(@goal)
+      if authorized_to_edit?(@goal)
         erb :'/goals/edit'
       else
         redirect "users/#{current_user.id}"
@@ -49,7 +57,7 @@ class GoalsController < ApplicationController
   patch '/goals/:id' do 
     set_goal 
     if logged_in?
-      if authorized_to_changes?(@goal)
+      if authorized_to_edit?(@goal)
         @goal.update(title: params[:title], description: params[:description])
         redirect "/goals/#{@goal.id}"
       else
