@@ -26,9 +26,11 @@ class GoalsController < ApplicationController
     end
     # Only want to save it if it has some content
     if params[:title] != "" && params[:description] != ""
+      flash[:message] = "Goal successfully created!"
       @goal = Goal.create(title: params[:title], description: params[:description], user_id: current_user.id)
       redirect "/goals/#{@goal.id}"
     else
+      flash[:message] = "Unable to create goal. Please try again."
       redirect '/goals/new'
     end
   end
