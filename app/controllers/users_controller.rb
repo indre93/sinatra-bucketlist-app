@@ -11,10 +11,11 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
     # log the user in - create the user session
-      session[:user_id] = @user.id #actually logging the user in
+      session[:user_id] = @user.id # actually logging the user in
+      flash[:messages] = "Welcome back #{@user.name}!"
       redirect "users/#{@user.id}"
     else
-      flash[:message] = "Invalid credentials. Please try again or sign up"
+      flash[:errors] = "Invalid credentials. Please try again or sign up."
       redirect '/login'
     end
   end
@@ -24,15 +25,18 @@ class UsersController < ApplicationController
     erb :signup
   end
 
+
   # this is where new user is created and persisted to the DB
   post '/users' do
     # I only want to persist a user that has a name, email & password
-    if params[:name] != "" && params[:email] != "" && params[:password] != ""
-      @user = User.create(params)
-      session[:user_id] = @user.id # actually logging the user in      
+    @user = User.new(params)
+
+    if @user.save
+      session[:user_id] = @user.id # actually logging the user in 
+      flash[:messages] = "Account successfully created. Welcome to the BucketList App, #{@user.name}!"    
       redirect "/users/#{@user.id}"
     else
-      flash[:message] = "Invalid credentials. Please try again"
+      flash[:errors] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
       redirect '/signup'
     end
   end
@@ -46,8 +50,10 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.clear
+      flash[:messages] = "You have successfully logged out!"
       redirect '/login'
     else
+      flash[:errors] = "Sorry, but you are not logged in."
       redirect '/'
     end
   end
