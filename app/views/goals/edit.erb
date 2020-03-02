@@ -4,14 +4,14 @@
   <input type="hidden" name="_method" value="patch">
 
   <h3>Tile: </h3>
-  <textarea name="title" style="width:auto; height:auto"><%= @goal.title %></textarea>
+    <textarea name="title" style="width:auto; height:auto"><%= @goal.title %></textarea>
   <br><br>
   <h3>Description: </h3>
-  <textarea name="description" style="width:auto; height:auto"><%= @goal.description %></textarea>
+    <textarea name="description" style="width:auto; height:auto"><%= @goal.description %></textarea>
   <br><br>
-  <input type="checkbox" name="completed?"> Goal Completed?
-
-
+  <label>Completed? </label>
+		<input type="checkbox"  name="completed?">  Yes 
+		<input type="checkbox"  name="completed?">  No
   <br><br>
   <input type="submit" value="Edit Goal">
 </form>
