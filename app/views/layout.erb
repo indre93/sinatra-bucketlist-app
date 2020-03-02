@@ -21,12 +21,18 @@
         <a href="/logout">Log out</a>
       <% end %>
     </div>
-    <br>
-    <% if flash[:message] %>
-      <h5><%= flash[:message] %></h5>
-    <% end %>
 
     <div class="wrapper">
+
+    <% if flash[:messages] %>
+      <h4 style="color: green;"><%= flash[:messages] %></h4>
+      <br>
+    <% end %>
+
+    <% if flash[:errors] %>
+      <h4 style="color: red;"><%= flash[:errors] %></h4>
+      <br>
+    <% end %>
 
         <%= yield %>
 
