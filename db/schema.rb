@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20200224173931) do
   create_table "goals", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.boolean  "completed?",  default: false
+    t.boolean  "completed?"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
