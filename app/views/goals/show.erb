@@ -1,7 +1,7 @@
 <h1>Goal </h1>
 <br>
   <h2><%= @goal.title %></h2>
-  <h5>Created: <%= @goal.created_at %></h5><br>
+  <h5>Posted on <%= @goal.formatted_created_at %></h5><br>
   <p><%= @goal.description %></p>
   
   <% if @goal.completed? %>

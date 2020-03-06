@@ -2,7 +2,7 @@
 
 <% @goals.each do |goal| %>
   <h4><a href="/goals/<%= goal.id %>"><%= goal.title %></a></h4>
-  <h6>Created: <%= goal.created_at %></h6>
+  <h6>Posted on <%= goal.formatted_created_at %></h6>
   <h5>By: <%= goal.user.name %></h5><br>
   <%= goal.description %><br><br>
 
