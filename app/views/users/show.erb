@@ -1,7 +1,7 @@
-<h2><%= @user.name %>'s Page</h2>
+<h1><%= @user.name %>'s Bucket List</h1>
 
-<h3>My Goals: </h3>
-<br>
+<h2>Goals: </h2>
+
 <% @user.goals.each do |goal| %>
   <h4><a href="/goals/<%= goal.id %>"><%= goal.title %></a></h4>
   <h6>Posted on <%= goal.formatted_created_at %></h6>
