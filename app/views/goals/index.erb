@@ -2,8 +2,8 @@
 
 <% @goals.each do |goal| %>
   <h4><a href="/goals/<%= goal.id %>"><%= goal.title %></a></h4>
+  <h5><a href="/users/<%= goal.user.id %>">Created by <%= goal.user.name %></a></h5>
   <h6>Posted on <%= goal.formatted_created_at %></h6>
-  <h5>By: <%= goal.user.name %></h5><br>
   <%= goal.description %><br><br>
 
   <% if goal.completed? %>
