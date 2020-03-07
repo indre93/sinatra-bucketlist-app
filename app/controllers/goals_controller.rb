@@ -17,7 +17,7 @@ class GoalsController < ApplicationController
   post '/goals' do 
     # Only want to save it if it has some content
     if params[:title] != "" && params[:description] != ""
-      @goal = Goal.create(title: params[:title], description: params[:description], user_id: current_user.id)
+      @goal = Goal.create(title: params[:title], description: params[:description], completed?: params[:completed?], user_id: current_user.id)
       flash[:messages] = "Goal has been successfully created!"
       redirect "/goals/#{@goal.id}"
     else
@@ -50,7 +50,7 @@ class GoalsController < ApplicationController
     set_goal 
     redirect_if_not_logged_in
     if authorized_to_edit?(@goal) && params[:title] != "" && params[:description] != ""
-      @goal.update(title: params[:title], description: params[:description])
+      @goal.update(title: params[:title], description: params[:description], completed?: params[:completed?])
       flash[:messages] = "Changes have successfully been made!"
       redirect "/goals/#{@goal.id}"
     else
