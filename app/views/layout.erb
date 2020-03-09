@@ -16,6 +16,7 @@
   <body>
   
     <header>
+    
       <nav>
         <ul class="nav_links">
           <% if logged_in? %>
@@ -25,9 +26,11 @@
           <% end %>
         </ul>
       </nav>
+
       <% if logged_in? %>
         <a class="logout_button" href="/logout"><button>Log out</button></a>
       <% end %>
+      
     </header>
 
     <div class="wrapper">
