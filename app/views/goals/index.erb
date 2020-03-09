@@ -1,16 +1,17 @@
 <h2>All Goals</h2>
 
-<% @goals.each do |goal| %>
-  <h4><a href="/goals/<%= goal.id %>"><%= goal.title %></a></h4>
-  <h6><a href="/users/<%= goal.user.id %>">By <%= goal.user.name %></a></h6>
-  <h6>Posted on <%= goal.formatted_created_at %></h6>
-  <%= goal.description %><br><br>
+<div class="goal_box">
+  <% @goals.each do |goal| %>
+    <h4><a href="/goals/<%= goal.id %>"><%= goal.title %></a></h4>
+    <h6><a href="/users/<%= goal.user.id %>">By <%= goal.user.name %></a></h6>
+    <h6>Posted on <%= goal.formatted_created_at %></h6>
+    <%= goal.description %><br><br>
 
-  <% if goal.completed? %>
-    <label><b>Completed? </b></label>YES!
-  <% else %>
-    <label><b>Completed? </b></label>NOPE
-  <% end %>  
-
-  <br>
-<% end %>
+    <% if goal.completed? %>
+      <label><b>Completed? </b></label>YES!
+    <% else %>
+      <label><b>Completed? </b></label>NOPE
+    <% end %>  
+    <br><br><br>
+  <% end %>
+</div>
