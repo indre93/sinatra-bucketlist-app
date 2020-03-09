@@ -1,9 +1,9 @@
 <h2>Goal: </h2>
 
   <h3><%= @goal.title %></h3>
-  <h5>Posted on <%= @goal.formatted_created_at %></h5>
+  <h6>Posted on <%= @goal.formatted_created_at %></h6>
   <h5><a href="/users/<%= @goal.user.id %>">By: <%= @goal.user.name %></a></h5>
-  <p><%= @goal.description %></p>
+  <p><%= @goal.description %></p><br>
   
   <% if @goal.completed? %>
     <label><b>Completed? </b></label>YES!
