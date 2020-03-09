@@ -12,7 +12,7 @@
   <% end %> 
 
 <% if authorized_to_edit?(@goal) %>
-<br><br>
+  <br><br>
   <a href="/goals/<%= @goal.id %>/edit">Edit</a>
   <br><br>
   <form action="/goals/<%= @goal.id %>" method="POST">
