@@ -41,7 +41,7 @@ class GoalsController < ApplicationController
       erb :'/goals/edit'
     else
       flash[:errors] = "Sorry! you cannot make changes to other people's goals."
-      redirect "users/#{current_user.id}"
+      redirect "goals/#{@goal.id}"
     end
   end
 
