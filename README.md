@@ -1,5 +1,14 @@
+Welcome to the Bucketlist App!
 
-A very simple BucketList App that allows users to sign up, log in, and create new goals. Users are able to edit and delete their own goals.
+This is a very simple application that allows users to sign up, log in, and log out. Users are able to create new goals and keep track of the completion of their goals, and as well as edit and delete their own goals if needed. Users can also view other user's bucket list, and every new goal posted is public for everyone to see and get inspired!
+
+Install Instructions
+
+1. Clone this repository
+2. Run bundle install to install all required gems
+3. Run shotgun 
+4. Copy and paste the link provided into a web browser
+5. Enjoy!
 
 License 
 
