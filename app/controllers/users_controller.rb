@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  
   # this route is to render the login page (form)
   get '/login' do 
-    erb :login
+    erb :'/users/login'
   end
 
   # this is to receive the login form, find the user and log the user in (create a session)
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   # this route's job is to render the signup page
   get '/signup' do
-    erb :signup
+    erb :'/users/signup'
   end
 
   # this is where new user is created and persisted to the DB
